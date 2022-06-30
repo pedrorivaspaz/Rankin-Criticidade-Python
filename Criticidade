@@ -1,0 +1,79 @@
+lista_vazamentos = [
+    {
+        "nome": 'canvas',
+        "criticidade": 16,
+        "senha": True,
+        "ajuda_de_senha": False,
+        "numero_de_telefone": True,
+        "nomes": True,
+        "email": True,
+        "data_do_vazamento": '05/2019',
+    },{
+        "nome": 'hurb',
+        "criticidade": 16,
+        "senha": True,
+        "ajuda_de_senha": False,
+        "numero_de_telefone": True,
+        "nomes": True,
+        "email": True,
+        "data_do_vazamento": '03/2019',
+    },{
+        "nome": 'adobe',
+        "criticidade": 16,
+        "senha": True,
+        "ajuda_de_senha": False,
+        "numero_de_telefone": True,
+        "nomes": True,
+        "email": True,
+        "data_do_vazamento": '10/2013',
+    },{
+        "nome": 'pdl',
+        "criticidade": 5,
+        "senha": True,
+        "ajuda_de_senha": False,
+        "numero_de_telefone": True,
+        "nomes": True,
+        "email": True,
+        "data_do_vazamento": '10/2019',
+    },{
+        "nome": 'apollo',
+        "criticidade": 5,
+        "senha": True,
+        "ajuda_de_senha": False,
+        "numero_de_telefone": True,
+        "nomes": True,
+        "email": True,
+        "data_do_vazamento": '07/2018',
+    }
+]
+
+ranking = {
+    'canvas': 0,
+    'hurb': 0,
+    'adobe': 0,
+    'pdl': 0,
+    'apollo': 0
+}
+
+for vazamento in lista_vazamentos:
+    ranking[vazamento['nome']] += vazamento['criticidade']
+
+    if vazamento["senha"]:
+        ranking[vazamento['nome']] += 1
+    if vazamento["ajuda_de_senha"]:
+        ranking[vazamento['nome']] += 1
+    if vazamento["numero_de_telefone"]:
+        ranking[vazamento['nome']] += 1
+    if vazamento["nomes"]:
+        ranking[vazamento['nome']] += 1
+    if vazamento["email"]:
+        ranking[vazamento['nome']] += 1
+
+ranking_ordenado = dict(
+    reversed(
+        sorted(
+            ranking.items(), key=lambda item: item[1]
+        )
+    )
+)
+print(ranking_ordenado)
